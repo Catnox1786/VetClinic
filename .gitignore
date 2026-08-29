@@ -1,0 +1,33 @@
+# Variáveis e segredos
+.env
+.env.*
+!.env.example
+
+# Configurações locais
+config.php
+
+# Bancos e dumps
+*.sql
+*.db
+*.sqlite
+
+# Logs
+*.log
+
+# Backups
+*.bak
+*.backup
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# Dependências futuras
+node_modules/
+
+# Arquivos temporários
+*.tmp
+*.temp
