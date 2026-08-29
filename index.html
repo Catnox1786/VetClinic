@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>VetClinic – Clínica Veterinária</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<!-- ════════ WEBSITE (tela pública) ════════ -->
+<div id="website-screen" class="screen active">
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="main-navbar">
+    <a class="nav-logo" href="#">
+      <div class="nav-logo-icon"><svg viewBox="0 0 26 26" fill="none"><path d="M13 2C7.5 2 3 6.5 3 12s4.5 10 10 10" stroke="white" stroke-width="2" stroke-linecap="round"/><circle cx="9.5" cy="10" r="1.8" fill="white"/><circle cx="16" cy="10" r="1.8" fill="white"/><path d="M9.5 16s1.5 2.5 3.5 2.5 3.5-2.5 3.5-2.5" stroke="white" stroke-width="1.6" stroke-linecap="round"/><circle cx="6.5" cy="7.5" r="1.4" fill="rgba(255,255,255,0.7)"/><circle cx="19.5" cy="7.5" r="1.4" fill="rgba(255,255,255,0.7)"/></svg></div>
+      <span class="nav-logo-text">Vet<span>Clinic</span></span>
+    </a>
+    <div class="nav-links">
+      <a class="nav-link active" href="#inicio">Início</a>
+      <a class="nav-link" href="#servicos">Serviços</a>
+      <a class="nav-link" href="#sobre">Sobre</a>
+      <a class="nav-link" href="#equipe">Equipe</a>
+      <a class="nav-link" href="#galeria">Galeria</a>
+      <a class="nav-link" href="#faq">FAQ</a>
+      <a class="nav-link" href="#contato">Contato</a>
+    </div>
+    <div class="nav-actions">
+      <button class="nav-theme-btn" onclick="toggleTheme()" id="nav-theme-btn" title="Alternar tema">
+        <svg id="nav-theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+      <button class="btn-acessar" onclick="openSystemModal()">Acessar Sistema</button>
+      <button class="nav-ham" id="nav-ham" onclick="toggleMobileNav()"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <div class="mobile-nav" id="mobile-nav">
+    <a class="mobile-nav-link" href="#inicio" onclick="toggleMobileNav()">Início</a>
+    <a class="mobile-nav-link" href="#servicos" onclick="toggleMobileNav()">Serviços</a>
+    <a class="mobile-nav-link" href="#sobre" onclick="toggleMobileNav()">Sobre</a>
+    <a class="mobile-nav-link" href="#equipe" onclick="toggleMobileNav()">Equipe</a>
+    <a class="mobile-nav-link" href="#galeria" onclick="toggleMobileNav()">Galeria</a>
+    <a class="mobile-nav-link" href="#faq" onclick="toggleMobileNav()">FAQ</a>
+    <a class="mobile-nav-link" href="#contato" onclick="toggleMobileNav()">Contato</a>
+    <a class="mobile-nav-link" style="color:var(--green);font-weight:600" onclick="openSystemModal();toggleMobileNav()">Acessar Sistema</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="inicio" style="padding:0;max-width:none;margin:0">
+    <div class="hero">
+      <div class="hero-blob1"></div>
+      <div class="hero-blob2"></div>
+      <div class="hero-inner">
+        <div>
+          <div class="hero-tag"><span class="hero-tag-dot"></span> Clínica Veterinária Especializada</div>
+          <h1>Cuidado e saúde para <em>cada patinha</em></h1>
+          <p class="hero-desc">Oferecemos atendimento veterinário completo com tecnologia de ponta, equipe especializada e o carinho que seu pet merece.</p>
+          <div class="hero-btns">
+            <button class="btn-hero-primary" onclick="openAppointmentModal()">Agendar Consulta</button>
+            <button class="btn-hero-outline" onclick="openServicesModal()">Ver Serviços</button>
+          </div>
+          <div class="hero-stats" style="margin-top:2.5rem">
+            <div class="hero-stat"><div class="hero-stat-num">500+</div><div class="hero-stat-lbl">Pacientes</div></div>
+            <div class="hero-stat"><div class="hero-stat-num">10+</div><div class="hero-stat-lbl">Anos de experiência</div></div>
+            <div class="hero-stat"><div class="hero-stat-num">24h</div><div class="hero-stat-lbl">Emergências</div></div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="hero-card">
+            <div class="hero-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M8 2v4M16 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg></div>
+            <h3>Agenda Digital</h3>
+            <p>Sistema integrado de agendamento e gestão de procedimentos</p>
+          </div>
+          <div class="hero-card">
+            <div class="hero-card-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+            <h3>Prontuário Eletrônico</h3>
+            <p>Histórico completo do seu pet sempre acessível e seguro</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <div class="section-outer" id="servicos">
+    <section>
+      <div class="section-head">
+        <div class="section-tag">Nossos Serviços</div>
+        <h2 class="section-title">Cuidado completo para o seu pet</h2>
+        <p class="section-sub">Oferecemos uma gama completa de serviços veterinários com equipamentos modernos e profissionais dedicados.</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg></div>
+          <h3>Consultas de Rotina</h3>
+          <p>Avaliação clínica completa, vacinas, vermifugação e cuidados preventivos para garantir a saúde do seu pet.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v11m0 0H5a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-6 0h6"/></svg></div>
+          <h3>Centro Cirúrgico</h3>
+          <p>Equipado com aparelho de anestesia inalatória, monitor multiparamétrico e foco cirúrgico de última geração.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19.5 12.572l-7.5 7.428-7.5-7.428A5 5 0 119.5 5.049L12 7.5l2.5-2.451a5 5 0 017 7.523z"/></svg></div>
+          <h3>Emergências 24h</h3>
+          <p>Atendimento de urgência e emergência disponível a qualquer hora do dia ou da noite para seu pet.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
+          <h3>Exames Laboratoriais</h3>
+          <p>Laboratório próprio com análises clínicas rápidas e precisas para diagnóstico ágil e eficiente.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4.5 12.5l7 7 8-11"/></svg></div>
+          <h3>Vacinação</h3>
+          <p>Calendário vacinal completo com as principais vacinas para cães, gatos e outros animais.</p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 3H9a2 2 0 00-2 2v14a2 2 0 002 2h6a2 2 0 002-2V5a2 2 0 00-2-2z"/><path d="M9 7h6M9 11h6M9 15h4"/></svg></div>
+          <h3>Prontuário Digital</h3>
+          <p>Acesse o histórico completo do seu pet a qualquer momento pelo nosso portal online.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ABOUT -->
+  <div class="section-outer alt" id="sobre">
+    <section>
+      <div class="about-grid">
+        <div class="about-img-wrap">
+          <div class="about-img-bg">
+            <svg class="about-svg" viewBox="0 0 120 120" fill="none"><path d="M60 10C32.4 10 10 32.4 10 60s22.4 50 50 50" stroke="white" stroke-width="4" stroke-linecap="round"/><circle cx="45" cy="48" r="7" fill="white"/><circle cx="74" cy="48" r="7" fill="white"/><path d="M45 72s6 10 15 10 15-10 15-10" stroke="white" stroke-width="4" stroke-linecap="round"/><circle cx="32" cy="34" r="6" fill="rgba(255,255,255,0.5)"/><circle cx="88" cy="34" r="6" fill="rgba(255,255,255,0.5)"/></svg>
+          </div>
+          <div class="about-badge">
+            <div class="about-badge-num">+10</div>
+            <div class="about-badge-txt">Anos cuidando<br/>do seu pet</div>
+          </div>
+        </div>
+        <div class="about-content">
+          <div class="section-tag">Sobre a Clínica</div>
+          <h2>Dedicação e excelência no cuidado animal</h2>
+          <p>A VetClinic nasceu da paixão por animais e do compromisso com a medicina veterinária de alta qualidade. Nossa equipe de especialistas trabalha com amor e dedicação para garantir o bem-estar do seu pet.</p>
+          <p>Contamos com estrutura completa, incluindo centro cirúrgico, laboratório próprio e tecnologia de ponta para diagnóstico e tratamento.</p>
+          <ul class="about-list">
+            <li>Centro cirúrgico totalmente equipado</li>
+            <li>Laboratório de análises clínicas próprio</li>
+            <li>Equipe multidisciplinar especializada</li>
+            <li>Atendimento de emergência 24 horas</li>
+            <li>Prontuário eletrônico e agenda digital</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- TEAM -->
+  <div class="section-outer" id="equipe">
+    <section>
+      <div class="section-head">
+        <div class="section-tag">Equipe veterinária</div>
+        <h2 class="section-title">Especialistas para cada fase do cuidado</h2>
+        <p class="section-sub">Um time multidisciplinar para consultas preventivas, emergências, cirurgias, exames e acompanhamento contínuo.</p>
+      </div>
+      <div class="team-grid">
+        <article class="team-card">
+          <div class="team-photo team-a">LA</div>
+          <div class="team-info">
+            <h3>Dra. Laura Almeida</h3>
+            <p>Clínica geral e medicina preventiva</p>
+            <span>CRMV-SP 12345</span>
+          </div>
+        </article>
+        <article class="team-card">
+          <div class="team-photo team-b">RM</div>
+          <div class="team-info">
+            <h3>Dr. Rafael Martins</h3>
+            <p>Cirurgia e anestesiologia</p>
+            <span>CRMV-SP 23456</span>
+          </div>
+        </article>
+        <article class="team-card">
+          <div class="team-photo team-c">BC</div>
+          <div class="team-info">
+            <h3>Dra. Bianca Costa</h3>
+            <p>Dermatologia e felinos</p>
+            <span>CRMV-SP 34567</span>
+          </div>
+        </article>
+        <article class="team-card">
+          <div class="team-photo team-d">NT</div>
+          <div class="team-info">
+            <h3>Dra. Natália Torres</h3>
+            <p>Diagnóstico por imagem e laboratório</p>
+            <span>CRMV-SP 45678</span>
+          </div>
+        </article>
+      </div>
+    </section>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <div class="section-outer alt" id="depoimentos">
+    <section>
+      <div class="section-head" style="text-align:center;margin-left:auto;margin-right:auto">
+        <div class="section-tag">Depoimentos</div>
+        <h2 class="section-title">Tutores que confiam na VetClinic</h2>
+      </div>
+      <div class="testimonials-grid" id="testimonials-grid"></div>
+      <div class="testimonials-empty" id="testimonials-empty">
+        <div class="testimonials-empty-icon">☆</div>
+        <strong>Ainda não há avaliações</strong>
+        <p>Os depoimentos enviados pelos tutores aparecerão aqui.</p>
+      </div>
+    </section>
+  </div>
+
+  <!-- GALLERY -->
+  <div class="section-outer" id="galeria">
+    <section>
+      <div class="section-head">
+        <div class="section-tag">Galeria</div>
+        <h2 class="section-title">Estrutura pensada para cuidado e segurança</h2>
+        <p class="section-sub">Ambientes organizados para receber tutores, realizar exames, procedimentos e monitoramento com conforto.</p>
+      </div>
+      <div class="gallery-grid">
+        <div class="gallery-tile large">
+          <div class="gallery-visual consultorio"></div>
+          <span>Consultórios acolhedores</span>
+        </div>
+        <div class="gallery-tile">
+          <div class="gallery-visual cirurgia"></div>
+          <span>Centro cirúrgico</span>
+        </div>
+        <div class="gallery-tile">
+          <div class="gallery-visual laboratorio"></div>
+          <span>Laboratório próprio</span>
+        </div>
+        <div class="gallery-tile">
+          <div class="gallery-visual internacao"></div>
+          <span>Monitoramento e internação</span>
+        </div>
+        <div class="gallery-tile">
+          <div class="gallery-visual recepcao"></div>
+          <span>Recepção tranquila</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- FEATURES / NUMBERS -->
+  <div class="section-outer">
+    <section>
+      <div class="section-head" style="text-align:center">
+        <div class="section-tag">Nossos Números</div>
+        <h2 class="section-title">Confiança que se mede em resultados</h2>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card"><div class="feature-num">500+</div><div class="feature-lbl">Pacientes Atendidos</div></div>
+        <div class="feature-card"><div class="feature-num">10+</div><div class="feature-lbl">Anos de Experiência</div></div>
+        <div class="feature-card"><div class="feature-num">98%</div><div class="feature-lbl">Satisfação dos Tutores</div></div>
+        <div class="feature-card"><div class="feature-num">24h</div><div class="feature-lbl">Plantão de Emergência</div></div>
+      </div>
+    </section>
+  </div>
+
+  <!-- LOCATION -->
+  <div class="section-outer alt" id="localizacao">
+    <section>
+      <div class="location-grid">
+        <div>
+          <div class="section-tag">Localização</div>
+          <h2 class="section-title">Chegue com facilidade, inclusive em emergências</h2>
+          <p class="section-sub">Estamos em uma região de fácil acesso, com atendimento de rotina durante a semana e suporte emergencial 24 horas.</p>
+          <div class="location-list">
+            <div><strong>Endereço</strong><span>Rua Exemplo, 100 - Bairro Verde, Sua Cidade - SP</span></div>
+            <div><strong>Telefone</strong><span>(16) 3954-1142</span></div>
+            <div><strong>Horário</strong><span>Seg-Sex: 8h-18h | Emergência: 24h</span></div>
+          </div>
+          <a class="btn-map" href="https://www.google.com/maps/search/?api=1&query=Rua%20Exemplo%20100%20Bairro%20Verde%20SP" target="_blank" rel="noopener">Como chegar</a>
+        </div>
+        <div class="map-card" aria-label="Mapa ilustrativo da clínica">
+          <div class="map-grid-bg"></div>
+          <div class="map-pin">
+            <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M21 10c0 7-9 12-9 12S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <div class="map-label">
+            <strong>VetClinic</strong>
+            <span>Rua Exemplo, 100</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section-outer" id="faq">
+    <section>
+      <div class="section-head">
+        <div class="section-tag">Dúvidas frequentes</div>
+        <h2 class="section-title">Respostas rápidas para tutores</h2>
+      </div>
+      <div class="faq-grid">
+        <details class="faq-item" open>
+          <summary>Preciso agendar consulta?</summary>
+          <p>Para consultas de rotina, recomendamos agendamento. Emergências são atendidas 24 horas conforme prioridade clínica.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Quais animais são atendidos?</summary>
+          <p>Atendemos cães, gatos e pequenos pets. Casos de animais exóticos passam por triagem da equipe.</p>
+        </details>
+        <details class="faq-item">
+          <summary>O portal do tutor mostra o histórico completo?</summary>
+          <p>O portal exibe dados do pet, procedimentos, histórico resumido, vacinas e próximas doses cadastradas pelo médico.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Como funcionam vacinas e retornos?</summary>
+          <p>A equipe registra a vacina aplicada, data e próxima dose. O tutor acompanha tudo pelo NA do pet.</p>
+        </details>
+      </div>
+    </section>
+  </div>
+
+  <!-- PRE APPOINTMENT -->
+  <div class="section-outer alt" id="pre-agendamento">
+    <section>
+      <div class="appointment-grid">
+        <div>
+          <div class="section-tag">Pré-agendamento</div>
+          <h2 class="section-title">Solicite um horário para o seu pet</h2>
+          <p class="section-sub">Envie os dados principais e a equipe retorna para confirmar disponibilidade. Se você já tiver o NA do pet, informe para vincular ao portal.</p>
+          <div class="appointment-note">
+            <strong>Emergência?</strong>
+            <span>Use o WhatsApp ou telefone para atendimento imediato.</span>
+          </div>
+        </div>
+        <div class="contact-form-card">
+          <h3>Dados da solicitação</h3>
+          <div class="fgrid compact">
+            <div class="cf-group"><label>Nome do tutor</label><input id="appt-tutor" type="text" placeholder="Seu nome"/></div>
+            <div class="cf-group"><label>Telefone / WhatsApp</label><input id="appt-phone" type="tel" placeholder="(00) 00000-0000"/></div>
+            <div class="cf-group"><label>Nome do pet</label><input id="appt-pet" type="text" placeholder="Ex: Luna"/></div>
+            <div class="cf-group"><label>NA do pet</label><input id="appt-na" type="number" min="1" placeholder="Opcional"/></div>
+            <div class="cf-group"><label>Serviço</label><select id="appt-service"><option value="">Selecione</option><option>Consulta de rotina</option><option>Vacinação</option><option>Exames laboratoriais</option><option>Cirurgia</option><option>Emergência</option><option>Retorno</option></select></div>
+            <div class="cf-group"><label>Data preferida</label><input id="appt-date" type="date"/></div>
+            <div class="cf-group full"><label>Mensagem</label><textarea id="appt-message" placeholder="Conte rapidamente o motivo do atendimento"></textarea></div>
+          </div>
+          <button class="btn-contact" onclick="submitAppointment()">Enviar pré-agendamento</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section-outer alt" id="contato">
+    <section>
+      <div class="section-head">
+        <div class="section-tag">Contato</div>
+        <h2 class="section-title">Fale com a gente</h2>
+        <p class="section-sub">Entre em contato para agendar uma consulta ou tirar dúvidas sobre os nossos serviços.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Informações de Contato</h3>
+          <div class="contact-item">
+            <div class="contact-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.5 12 19.79 19.79 0 011.39 3.38 2 2 0 013.37 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.91 9.91a16 16 0 006.18 6.18l1.28-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
+            <div><div class="contact-item-title">Telefone</div><div class="contact-item-val">(16) 3954-1142</div></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div class="contact-item-title">Endereço</div><div class="contact-item-val">Rua Exemplo, 100 – Bairro Verde, Sua Cidade - SP</div></div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+            <div><div class="contact-item-title">Horário</div><div class="contact-item-val">Seg–Sex: 8h–18h | Emergência: 24h</div></div>
+          </div>
+          <button onclick="openSystemModal()" style="margin-top:1rem;padding:12px 24px;background:rgba(255,255,255,0.2);color:#fff;border:2px solid rgba(255,255,255,0.4);border-radius:var(--r);font-family:var(--fb);font-size:14px;font-weight:600;cursor:pointer;width:100%;transition:all .2s;backdrop-filter:blur(8px)" onmouseover="this.style.background='rgba(255,255,255,0.3)'" onmouseout="this.style.background='rgba(255,255,255,0.2)'">Acessar Portal do Tutor</button>
+        </div>
+        <div class="contact-form-card">
+          <h3>Envie uma mensagem</h3>
+          <div class="cf-group"><label>Nome completo</label><input type="text" placeholder="Seu nome"/></div>
+          <div class="cf-group"><label>E-mail</label><input type="email" placeholder="seu@email.com"/></div>
+          <div class="cf-group"><label>Telefone</label><input type="tel" placeholder="(00) 00000-0000"/></div>
+          <div class="cf-group"><label>Mensagem</label><textarea placeholder="Como podemos ajudar?"></textarea></div>
+          <button class="btn-contact" onclick="showToast('Mensagem enviada! Entraremos em contato em breve.')">Enviar Mensagem</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">VetClinic</div>
+          <p class="footer-desc">Cuidando da saúde e bem-estar do seu pet com carinho, tecnologia e excelência veterinária.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <ul>
+            <li onclick="scrollTo('#inicio')">Início</li>
+            <li onclick="scrollTo('#servicos')">Serviços</li>
+            <li onclick="scrollTo('#sobre')">Sobre</li>
+            <li onclick="scrollTo('#equipe')">Equipe</li>
+            <li onclick="scrollTo('#galeria')">Galeria</li>
+            <li onclick="scrollTo('#faq')">FAQ</li>
+            <li onclick="scrollTo('#contato')">Contato</li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Sistema</h4>
+          <ul>
+            <li onclick="openSystemModal()">Portal do Tutor</li>
+            <li onclick="openSystemModal()">Área do Médico</li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 VetClinic. Todos os direitos reservados.</span>
+        <span>Protótipo institucional</span>
+      </div>
+    </div>
+  </footer>
+
+  <a class="whatsapp-float" href="https://wa.me/551639541142?text=Ol%C3%A1%2C%20quero%20agendar%20um%20atendimento%20para%20meu%20pet." target="_blank" rel="noopener" aria-label="Chamar a VetClinic no WhatsApp">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M20.5 11.8a8.5 8.5 0 01-12.4 7.6L4 20.5l1.1-4A8.5 8.5 0 1120.5 11.8z"/><path d="M9 8.7c.2-.5.4-.6.8-.6h.6c.2 0 .5.1.6.5l.5 1.2c.1.3.1.5-.1.7l-.4.5c.8 1.3 1.8 2.2 3.1 2.8l.5-.5c.2-.2.5-.2.7-.1l1.2.6c.4.2.5.4.5.7v.5c0 .4-.2.7-.6.9-.5.2-1.2.3-2 .1-2.4-.5-5-2.9-5.8-5.1-.3-.9-.2-1.7-.1-2.2z"/></svg>
+    <span>WhatsApp</span>
+  </a>
+
+</div><!-- /website-screen -->
+
+<!-- ════════ SYSTEM MODAL (login) ════════ -->
+<div class="system-modal-bg" id="system-modal-bg" onclick="if(event.target===this)closeSystemModal()">
+  <div class="system-modal system-modal-wrap">
+    <div class="system-modal-handle"></div>
+    <button class="system-modal-close" onclick="closeSystemModal()">✕</button>
+    <div class="system-modal-inner">
+
+      <!-- ROLE SELECTION -->
+      <div id="sm-role">
+        <div class="role-modal-title">Acessar Sistema</div>
+        <div class="role-modal-sub">Escolha como deseja entrar no sistema</div>
+        <div class="role-options">
+          <button class="role-opt" onclick="showAuthPanel('doc')">
+            <div class="role-opt-icon doc"><svg viewBox="0 0 26 26" fill="none" stroke="white" stroke-width="1.8"><circle cx="13" cy="8" r="4.5"/><path d="M4 23c0-5 4-9 9-9s9 4 9 9"/><path d="M13 15v5M10.5 17.5h5" stroke-width="2" stroke-linecap="round"/></svg></div>
+            <h3>Médico Veterinário</h3>
+            <p>Painel de gestão, cadastros e agenda</p>
+          </button>
+          <button class="role-opt" onclick="showAuthPanel('pat')">
+            <div class="role-opt-icon pat"><svg viewBox="0 0 26 26" fill="none" stroke="white" stroke-width="1.8"><path d="M13 3C8.6 3 5 6.6 5 11s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8z"/><circle cx="10.5" cy="10" r="1.5" fill="white"/><circle cx="15.5" cy="10" r="1.5" fill="white"/><path d="M10.5 15s1 2 2.5 2 2.5-2 2.5-2"/></svg></div>
+            <h3>Tutor / Paciente</h3>
+            <p>Consulte o histórico do seu pet</p>
+          </button>
+        </div>
+      </div>
+
+      <!-- DOC AUTH -->
+      <div id="sm-doc-auth" style="display:none">
+        <button class="auth-back-btn" onclick="showRolePanel()"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><path d="M10 3L5 8l5 5"/></svg>Voltar</button>
+        <div class="auth-modal-brand"><div class="auth-modal-icon"><svg viewBox="0 0 22 22" fill="none" stroke="white" stroke-width="1.8"><circle cx="11" cy="7" r="3.5"/><path d="M3 20c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></div></div>
+        <div class="auth-modal-title">Área do Médico</div>
+        <div class="auth-modal-sub">Entre com sua conta ou crie uma nova</div>
+        <div class="auth-tabs-modal"><button class="auth-tab-modal active" onclick="switchDocTab('login')">Entrar</button><button class="auth-tab-modal" onclick="switchDocTab('register')">Criar conta</button></div>
+        <div id="doc-login-panel">
+          <div class="fg"><label>E-mail</label><input type="email" id="doc-login-email" placeholder="seu@email.com"/></div>
+          <div class="fg"><label>Senha</label><input type="password" id="doc-login-pwd" placeholder="••••••••"/></div>
+          <div class="fg"><div class="clinic-lbl"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><rect x="3" y="7" width="10" height="8" rx="1.5"/><path d="M5 7V5a3 3 0 016 0v2"/></svg>Senha da Clínica</div><input type="password" class="clinic-inp" id="doc-login-key" placeholder="Chave de acesso da clínica"/></div>
+          <div id="doc-login-msg"></div>
+          <button class="btn-auth" onclick="doDocLogin()">Entrar no sistema</button>
+        </div>
+        <div id="doc-register-panel" style="display:none">
+          <div class="fg"><label>Nome completo</label><input type="text" id="doc-reg-name" placeholder="Dr. João Silva"/></div>
+          <div class="fg"><label>E-mail</label><input type="email" id="doc-reg-email" placeholder="seu@email.com"/></div>
+          <div class="fg"><label>Senha</label><input type="password" id="doc-reg-pwd" placeholder="Mínimo 12 caracteres"/><div class="hint">12+ caracteres, maiúscula, minúscula, número e símbolo</div></div>
+          <div class="fg"><div class="clinic-lbl"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><rect x="3" y="7" width="10" height="8" rx="1.5"/><path d="M5 7V5a3 3 0 016 0v2"/></svg>Senha da Clínica</div><input type="password" class="clinic-inp" id="doc-reg-key" placeholder="Chave de acesso da clínica"/></div>
+          <div id="doc-reg-msg"></div>
+          <button class="btn-auth" onclick="doDocRegister()">Criar conta</button>
+        </div>
+      </div>
+
+      <!-- PAT AUTH -->
+      <div id="sm-pat-auth" style="display:none">
+        <button class="auth-back-btn" onclick="showRolePanel()"><svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><path d="M10 3L5 8l5 5"/></svg>Voltar</button>
+        <div class="auth-modal-brand"><div class="auth-modal-icon"><svg viewBox="0 0 22 22" fill="none" stroke="white" stroke-width="1.8"><path d="M11 3C7.1 3 4 6.1 4 10s3.1 7 7 7 7-3.1 7-7-3.1-7-7-7z"/></svg></div></div>
+        <div class="auth-modal-title">Portal do Tutor</div>
+        <div class="auth-modal-sub">Acesse o histórico do seu pet</div>
+        <div class="auth-tabs-modal"><button class="auth-tab-modal active" onclick="switchPatTab('login')">Entrar</button><button class="auth-tab-modal" onclick="switchPatTab('register')">Criar conta</button></div>
+        <div id="pat-login-panel">
+          <div class="fg"><label>E-mail</label><input type="email" id="pat-login-email" placeholder="seu@email.com"/></div>
+          <div class="fg"><label>Senha</label><input type="password" id="pat-login-pwd" placeholder="••••••••"/></div>
+          <div id="pat-login-msg"></div>
+          <button class="btn-auth" onclick="doPatLogin()">Acessar portal</button>
+        </div>
+        <div id="pat-register-panel" style="display:none">
+          <div class="fg"><label>Nome completo</label><input type="text" id="pat-reg-name" placeholder="Maria Santos"/></div>
+          <div class="fg"><label>E-mail</label><input type="email" id="pat-reg-email" placeholder="seu@email.com"/></div>
+          <div class="fg"><label>Senha</label><input type="password" id="pat-reg-pwd" placeholder="Mínimo 12 caracteres"/><div class="hint">12+ caracteres, maiúscula, minúscula, número e símbolo</div></div>
+          <div id="pat-reg-msg"></div>
+          <button class="btn-auth" onclick="doPatRegister()">Criar conta</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ════════ DOCTOR APP ════════ -->
+<div id="app-screen" class="screen">
+  <div class="reminder-stack" id="reminder-stack"></div>
+  <div class="app-topbar">
+    <div class="app-brand">
+      <button class="app-ham" id="app-ham" onclick="toggleAppSidebar()"><span></span><span></span><span></span></button>
+      <div class="app-brand-icon"><svg viewBox="0 0 22 22" fill="none"><path d="M11 2C6.5 2 2.5 6 2.5 11s4 9 8.5 9" stroke="white" stroke-width="1.8" stroke-linecap="round"/><circle cx="8.5" cy="9" r="1.3" fill="white"/><circle cx="13.5" cy="9" r="1.3" fill="white"/><path d="M8.5 14s1 1.5 2.5 1.5 2.5-1.5 2.5-1.5" stroke="white" stroke-width="1.4" stroke-linecap="round"/><circle cx="6" cy="6.5" r="1.1" fill="rgba(255,255,255,0.7)"/><circle cx="16" cy="6.5" r="1.1" fill="rgba(255,255,255,0.7)"/></svg></div>
+      <span class="app-brand-name">VetClinic</span>
+    </div>
+    <div class="app-right">
+      <button class="app-theme-btn" onclick="toggleTheme()" id="app-theme-btn"><svg id="app-theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
+      <div class="app-user-btn" id="doc-user-btn" onclick="togglePanel('doc')">
+        <div class="app-av" id="tb-av">V</div>
+        <span class="app-un" id="tb-un">Veterinário</span>
+        <svg class="app-chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+      </div>
+    </div>
+  </div>
+  <div class="app-body">
+    <div class="app-sidebar" id="app-sidebar">
+      <div class="sb-lbl">Menu</div>
+      <button class="sb-item active" id="nav-cadastro" onclick="showSection('cadastro')"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="14" height="14" rx="3"/><path d="M10 7v6M7 10h6"/></svg>Cadastrar paciente</button>
+      <button class="sb-item" id="nav-banco" onclick="showSection('banco')"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><ellipse cx="10" cy="5" rx="7" ry="2.5"/><path d="M3 5v4c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V5"/><path d="M3 9v4c0 1.4 3.1 2.5 7 2.5s7-1.1 7-2.5V9"/></svg>Banco de dados</button>
+      <button class="sb-item" id="nav-agenda" onclick="showSection('agenda')"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="4" width="14" height="13" rx="2.5"/><path d="M7 2v4M13 2v4M3 9h14"/></svg>Agenda / Calendário</button>
+      <button class="sb-item" id="nav-solicitacoes" onclick="showSection('solicitacoes')"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 4h12v12H4z"/><path d="M7 8h6M7 12h4"/></svg>Solicitações</button>
+      <button class="sb-item" id="nav-clinico" onclick="showSection('clinico')"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M10 3v14M3 10h14"/><rect x="4" y="4" width="12" height="12" rx="3"/></svg>Prontuário</button>
+      <div class="sb-foot"><div class="sb-stat"><div class="sb-sn" id="sb-count">0</div><div class="sb-sl">Pacientes</div></div></div>
+    </div>
+    <div class="app-content" id="app-content" onclick="closeAppSidebar(event)">
+      <!-- CADASTRO -->
+      <div id="section-cadastro">
+        <div class="app-sec-t">Cadastrar paciente</div>
+        <div class="app-sec-s">Preencha os dados do animal para registrar no sistema</div>
+        <div class="acard">
+          <div class="acard-st"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 20 20"><circle cx="10" cy="8" r="4"/><path d="M3 18c0-3.9 3.1-7 7-7s7 3.1 7 7"/></svg>Dados do Paciente</div>
+          <div class="fgrid">
+            <div class="fg2"><label>Nome do animal <span>*</span></label><input type="text" id="f-nome" placeholder="Ex: Rex"/></div>
+            <div class="fg2"><label>Espécie <span>*</span></label><select id="f-especie"><option value="">Selecione</option><option>Cachorro</option><option>Gato</option><option>Pássaro</option><option>Coelho</option><option>Hamster</option><option>Réptil</option><option>Peixe</option><option>Outro</option></select></div>
+            <div class="fg2"><label>Raça <span>*</span></label><input type="text" id="f-raca" placeholder="Ex: Labrador"/></div>
+            <div class="fg2"><label>Idade</label><input type="text" id="f-idade" placeholder="Ex: 3 anos"/></div>
+            <div class="fg2"><label>Nome do dono <span>*</span></label><input type="text" id="f-dono" placeholder="Ex: Maria Santos"/></div>
+            <div class="fg2"><label>Telefone do dono <span>*</span></label><input type="tel" id="f-dono-tel" placeholder="Ex: (16) 99999-8888"/></div>
+            <div class="fg2 full">
+              <label>Foto do paciente</label>
+              <div class="photo-row">
+                <div class="photo-drop"><input type="file" accept="image/*" id="f-foto" onchange="handlePetPhoto(this)"/><div id="pp-placeholder"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg><span>Clique para enviar</span></div><img id="pp-preview" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:inherit"/></div>
+                <div class="photo-info"><p>Foto do animal</p><small>JPG, PNG, WEBP. Máx. 5MB.</small></div>
+              </div>
+            </div>
+            <div class="fg2 full"><label>Descrição dos sintomas</label><textarea id="f-sintomas" placeholder="Descreva os sintomas observados..."></textarea></div>
+          </div>
+          <div class="proc-box">
+            <div class="acard-st" style="border-bottom:1px solid rgba(26,122,94,0.15)"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 20 20"><rect x="3" y="4" width="14" height="13" rx="2.5"/><path d="M7 2v4M13 2v4M3 9h14"/></svg>Agendar Procedimento <span style="font-size:12px;font-weight:400;color:var(--light)">(opcional)</span></div>
+            <div class="fgrid" style="margin-top:1rem">
+              <div class="fg2 full"><label>Descrição do procedimento</label><textarea id="f-proc" placeholder="Ex: Cirurgia de castração, Transfusão de sangue..." style="min-height:65px"></textarea></div>
+              <div class="fg2"><label>Data</label><input type="date" id="f-proc-date"/></div>
+              <div class="fg2"><label>Horário</label><select id="f-proc-time"><option value="">Selecione</option></select></div>
+            </div>
+            <p style="font-size:12px;color:var(--light);margin-top:.5rem">⏰ Disponível: 08:00–12:30 e 14:00–18:00 | 🍽 Almoço: 12:30–14:00</p>
+          </div>
+          <div class="form-actions">
+            <button class="btn-save" onclick="cadastrar()">Salvar cadastro</button>
+            <button class="btn-clr" onclick="limparForm()">Limpar</button>
+            <div id="cadastro-msg"></div>
+          </div>
+        </div>
+      </div>
+      <!-- BANCO -->
+      <div id="section-banco" style="display:none">
+        <div class="app-sec-t">Banco de dados</div>
+        <div class="app-sec-s">Todos os pacientes cadastrados no sistema</div>
+        <div class="stats-row">
+          <div class="stat-card"><div class="slbl">Total</div><div class="sval" id="stat-total">0</div><div class="ssub">pacientes</div></div>
+          <div class="stat-card"><div class="slbl">Última consulta</div><div class="sval" id="stat-last" style="font-size:18px;padding-top:8px">—</div><div class="ssub">data</div></div>
+          <div class="stat-card"><div class="slbl">Mais comum</div><div class="sval" id="stat-species" style="font-size:18px;padding-top:8px">—</div><div class="ssub">espécie</div></div>
+        </div>
+        <div class="db-top"><div></div><div class="sw"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="7" cy="7" r="4.5"/><path d="M11 11l2.5 2.5"/></svg><input class="si" type="text" placeholder="Buscar..." oninput="renderTable(this.value)"/></div></div>
+        <div class="tcard"><div style="overflow-x:auto"><table class="dbt"><thead><tr><th>NA</th><th>Foto</th><th>Nome</th><th>Espécie/Raça</th><th>Dono</th><th>Última consulta</th><th>Ações</th></tr></thead><tbody id="db-tbody"></tbody></table><div class="empty-st" id="db-empty" style="display:none"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="24" cy="24" r="18"/><path d="M18 22c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg><p>Nenhum paciente cadastrado.</p></div></div></div>
+      </div>
+      <!-- AGENDA -->
+      <div id="section-agenda" style="display:none">
+        <div class="app-sec-t">Agenda / Calendário</div>
+        <div class="app-sec-s">Clique em um dia para ver os procedimentos</div>
+        <div class="cal-wrap">
+          <div class="cal-nav"><div class="cal-nt" id="cal-month-title">—</div><div class="cal-nbs"><button class="cal-btn" onclick="changeCalMonth(-1)"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><path d="M10 3L5 8l5 5"/></svg></button><button class="cal-btn" onclick="changeCalMonth(0)"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><rect x="2" y="3" width="12" height="11" rx="2"/><path d="M5 1v3M11 1v3M2 7h12"/></svg></button><button class="cal-btn" onclick="changeCalMonth(1)"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5"/></svg></button></div></div>
+          <div class="cal-grid" id="cal-dows"></div>
+          <div class="cal-grid" id="cal-days" style="margin-top:4px"></div>
+          <div class="cal-det" id="cal-det" style="display:none"><div class="cal-det-title"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 20 20"><rect x="3" y="4" width="14" height="13" rx="2.5"/><path d="M7 2v4M13 2v4M3 9h14"/></svg><span id="cal-det-date">—</span><span class="badge-cnt" id="cal-badge-cnt">0</span></div><div class="proc-list" id="cal-proc-list"></div></div>
+        </div>
+      </div>
+      <!-- SOLICITACOES -->
+      <div id="section-solicitacoes" style="display:none">
+        <div class="app-sec-t">Solicitações de pré-agendamento</div>
+        <div class="app-sec-s">Pedidos enviados pelo formulário público do site</div>
+        <div class="stats-row">
+          <div class="stat-card"><div class="slbl">Recebidas</div><div class="sval" id="appt-stat-total">0</div><div class="ssub">solicitações</div></div>
+          <div class="stat-card"><div class="slbl">Pendentes</div><div class="sval" id="appt-stat-pending">0</div><div class="ssub">para retorno</div></div>
+          <div class="stat-card"><div class="slbl">Vinculadas</div><div class="sval" id="appt-stat-linked">0</div><div class="ssub">com NA</div></div>
+        </div>
+        <div class="requests-list" id="appointments-list"></div>
+      </div>
+
+      <!-- CLINICO -->
+      <div id="section-clinico" style="display:none">
+        <div class="app-sec-t">Prontuário e vacinas</div>
+        <div class="app-sec-s">Registre eventos clínicos, vacinas e próximas doses</div>
+        <div class="clinical-layout">
+          <div class="acard">
+            <div class="acard-st"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 20 20"><circle cx="10" cy="10" r="7"/><path d="M10 6v8M6 10h8"/></svg>Paciente ativo</div>
+            <div class="fg2 full"><label>Selecionar paciente</label><select id="clinical-patient" onchange="renderClinicalArea()"><option value="">Selecione</option></select></div>
+            <div id="clinical-patient-card" class="clinical-patient-card"></div>
+          </div>
+          <div class="acard">
+            <div class="acard-st">Novo evento clínico</div>
+            <div class="fgrid">
+              <div class="fg2"><label>Tipo</label><select id="hist-type"><option>Consulta</option><option>Diagnóstico</option><option>Medicação</option><option>Exame</option><option>Vacina</option><option>Procedimento</option></select></div>
+              <div class="fg2"><label>Data</label><input type="date" id="hist-date"/></div>
+              <div class="fg2 full"><label>Descrição</label><textarea id="hist-desc" placeholder="Resumo clínico, conduta, orientação ou resultado"></textarea></div>
+            </div>
+            <div class="form-actions"><button class="btn-save" onclick="addHistoryEvent()">Adicionar ao histórico</button></div>
+          </div>
+          <div class="acard">
+            <div class="acard-st">Controle de vacinas</div>
+            <div class="fgrid">
+              <div class="fg2"><label>Vacina</label><input type="text" id="vac-name" placeholder="Ex: V10, Antirrábica"/></div>
+              <div class="fg2"><label>Aplicação</label><input type="date" id="vac-date"/></div>
+              <div class="fg2"><label>Próxima dose</label><input type="date" id="vac-next"/></div>
+              <div class="fg2"><label>Status</label><select id="vac-status"><option>Aplicada</option><option>Agendada</option><option>Atrasada</option></select></div>
+            </div>
+            <div class="form-actions"><button class="btn-save" onclick="addVaccineEvent()">Salvar vacina</button></div>
+          </div>
+        </div>
+        <div class="clinical-results">
+          <div class="timeline-card">
+            <h3>Histórico clínico</h3>
+            <div id="clinical-history-list"></div>
+          </div>
+          <div class="timeline-card">
+            <h3>Vacinas</h3>
+            <div id="clinical-vaccine-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ PATIENT PORTAL ════════ -->
+<div id="patient-screen" class="screen">
+  <div class="app-topbar">
+    <div class="app-brand">
+      <div class="app-brand-icon"><svg viewBox="0 0 22 22" fill="none"><path d="M11 2C6.5 2 2.5 6 2.5 11s4 9 8.5 9" stroke="white" stroke-width="1.8" stroke-linecap="round"/><circle cx="8.5" cy="9" r="1.3" fill="white"/><circle cx="13.5" cy="9" r="1.3" fill="white"/></svg></div>
+      <span class="app-brand-name">VetClinic</span>
+      <span style="font-size:12px;color:var(--light);background:var(--green-pale);padding:3px 10px;border-radius:20px;margin-left:4px">Portal do Tutor</span>
+    </div>
+    <div class="app-right">
+      <button class="pat-home-btn" onclick="returnToWebsite()" title="Voltar para a tela inicial">Início</button>
+      <button class="app-theme-btn" onclick="toggleTheme()" id="pat-theme-btn"><svg id="pat-theme-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></button>
+      <div class="app-user-btn" id="pat-user-btn" onclick="togglePanel('pat')">
+        <div class="app-av" id="pat-tb-av">T</div>
+        <span class="app-un" id="pat-tb-un"></span>
+        <svg class="app-chev" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6l4 4 4-4"/></svg>
+      </div>
+    </div>
+  </div>
+  <div class="pat-body">
+    <div class="pat-content">
+      <div class="pat-review-card">
+        <div class="pat-review-head">
+          <div>
+            <span class="pat-review-kicker">Sua experiência</span>
+            <h2>Avalie o atendimento da VetClinic</h2>
+            <p>Dê uma nota de 0 a 5 estrelas e deixe seu depoimento.</p>
+          </div>
+          <span class="pat-review-score" id="pat-review-score">Sem nota</span>
+        </div>
+        <div class="rating-picker" id="rating-picker" aria-label="Nota de 0 a 5 estrelas">
+          <button type="button" class="rating-zero" onclick="setReviewRating(0)" data-rating="0">0</button>
+          <button type="button" class="rating-star" onclick="setReviewRating(1)" data-rating="1" aria-label="1 estrela">★</button>
+          <button type="button" class="rating-star" onclick="setReviewRating(2)" data-rating="2" aria-label="2 estrelas">★</button>
+          <button type="button" class="rating-star" onclick="setReviewRating(3)" data-rating="3" aria-label="3 estrelas">★</button>
+          <button type="button" class="rating-star" onclick="setReviewRating(4)" data-rating="4" aria-label="4 estrelas">★</button>
+          <button type="button" class="rating-star" onclick="setReviewRating(5)" data-rating="5" aria-label="5 estrelas">★</button>
+        </div>
+        <textarea id="pat-review-text" class="pat-review-text" maxlength="500" placeholder="Conte como foi sua experiência com a clínica..."></textarea>
+        <div class="pat-review-actions">
+          <span id="pat-review-msg"></span>
+          <button type="button" class="btn-review-save" onclick="saveTutorReview()">Publicar avaliação</button>
+        </div>
+      </div>
+
+      <div class="pat-search-card">
+        <h2>Consultar meu pet</h2>
+        <p>Digite o Número do Animal (NA). No primeiro acesso, confirme também o telefone cadastrado na clínica.</p>
+        <div class="pat-srow"><input class="pat-nai" type="text" id="pat-na-in" placeholder="NA: 001 ou 1"/><input class="pat-nai" type="tel" id="pat-claim-phone" placeholder="Telefone do cadastro"/><button class="btn-search" onclick="searchPat()">Buscar / Vincular</button></div>
+        <div id="pat-search-msg" style="margin-top:.75rem;font-size:13px"></div>
+      </div>
+      <div id="pat-result" style="display:none">
+        <div class="pat-profile" id="pat-profile-card"></div>
+        <div class="pat-cal-card">
+          <div class="pat-cal-head">
+            <div class="pat-cal-title"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 20 20"><rect x="3" y="4" width="14" height="13" rx="2.5"/><path d="M7 2v4M13 2v4M3 9h14"/></svg>Procedimentos</div>
+            <div style="display:flex;align-items:center;gap:8px"><span class="pat-cal-month" id="pat-cal-month">—</span><div style="display:flex;gap:6px"><button class="cal-btn" onclick="changePatCal(-1)"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><path d="M10 3L5 8l5 5"/></svg></button><button class="cal-btn" onclick="changePatCal(1)"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 16 16"><path d="M6 3l5 5-5 5"/></svg></button></div></div>
+          </div>
+          <div class="cal-grid" id="pat-cal-dows"></div>
+          <div class="cal-grid" id="pat-cal-days" style="margin-top:4px"></div>
+          <div class="pat-procs" id="pat-procs"></div>
+        </div>
+        <div class="pat-extra-grid">
+          <div class="pat-cal-card">
+            <div class="pat-cal-title">Histórico clínico</div>
+            <div id="pat-history-list" class="pat-info-list"></div>
+          </div>
+          <div class="pat-cal-card">
+            <div class="pat-cal-title">Vacinas e próximas doses</div>
+            <div id="pat-vaccine-list" class="pat-info-list"></div>
+          </div>
+          <div class="pat-cal-card full">
+            <div class="pat-cal-title">Pré-agendamentos vinculados</div>
+            <div id="pat-appointment-list" class="pat-info-list"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- SERVICES MODAL -->
+<div class="services-modal-bg" id="services-modal-bg" role="dialog" aria-modal="true" aria-labelledby="services-modal-title" onclick="if(event.target===this)closeServicesModal()">
+  <div class="services-modal">
+    <div class="services-modal-head">
+      <div>
+        <div class="section-tag">Conheça a VetClinic</div>
+        <h2 id="services-modal-title">Como podemos cuidar do seu pet?</h2>
+        <p>Confira os principais serviços disponíveis na clínica.</p>
+      </div>
+      <button class="services-modal-close" type="button" onclick="closeServicesModal()" aria-label="Fechar janela de serviços">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4l12 12M16 4L4 16"/></svg>
+      </button>
+    </div>
+
+    <div class="services-modal-tabs" role="tablist" aria-label="Opções da janela">
+      <button class="services-modal-tab active" type="button" role="tab" aria-selected="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+        Serviços
+      </button>
+    </div>
+
+    <div class="services-modal-body">
+      <div class="services-modal-grid">
+        <article class="services-modal-card">
+          <div class="services-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/></svg></div>
+          <div><h3>Consultas de Rotina</h3><p>Avaliação clínica completa, vacinas, vermifugação e cuidados preventivos para acompanhar a saúde do seu pet.</p></div>
+        </article>
+        <article class="services-modal-card">
+          <div class="services-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v11m0 0H5a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-6 0h6"/></svg></div>
+          <div><h3>Centro Cirúrgico</h3><p>Estrutura equipada para procedimentos cirúrgicos, anestesia e monitoramento com segurança.</p></div>
+        </article>
+        <article class="services-modal-card">
+          <div class="services-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M19.5 12.572l-7.5 7.428-7.5-7.428A5 5 0 119.5 5.049L12 7.5l2.5-2.451a5 5 0 017 7.523z"/></svg></div>
+          <div><h3>Emergências 24h</h3><p>Atendimento de urgência e emergência disponível a qualquer hora para situações que precisam de resposta rápida.</p></div>
+        </article>
+        <article class="services-modal-card">
+          <div class="services-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg></div>
+          <div><h3>Exames Laboratoriais</h3><p>Análises clínicas realizadas com agilidade para auxiliar no diagnóstico e acompanhamento dos pacientes.</p></div>
+        </article>
+        <article class="services-modal-card">
+          <div class="services-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4.5 12.5l7 7 8-11"/></svg></div>
+          <div><h3>Vacinação</h3><p>Controle do calendário vacinal e aplicação das principais vacinas para cães, gatos e outros animais.</p></div>
+        </article>
+        <article class="services-modal-card">
+          <div class="services-modal-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M15 3H9a2 2 0 00-2 2v14a2 2 0 002 2h6a2 2 0 002-2V5a2 2 0 00-2-2z"/><path d="M9 7h6M9 11h6M9 15h4"/></svg></div>
+          <div><h3>Prontuário Digital</h3><p>Histórico do pet, procedimentos e informações clínicas organizadas e acessíveis pelo portal.</p></div>
+        </article>
+      </div>
+    </div>
+
+    <div class="services-modal-footer">
+      <span>Encontrou o atendimento que precisa?</span>
+      <button type="button" onclick="openAppointmentFromServices()">Agendar consulta</button>
+    </div>
+  </div>
+</div>
+
+<!-- APPOINTMENT MODAL -->
+<div class="services-modal-bg booking-modal-bg" id="booking-modal-bg" role="dialog" aria-modal="true" aria-labelledby="booking-modal-title" onclick="if(event.target===this)closeAppointmentModal()">
+  <div class="services-modal booking-modal">
+    <div class="services-modal-head">
+      <div>
+        <div class="section-tag">Agendamento online</div>
+        <h2 id="booking-modal-title">Agende uma consulta</h2>
+        <p>Escolha uma data e um horário disponível. Horários já ocupados por procedimentos ou outros agendamentos ficam bloqueados automaticamente.</p>
+      </div>
+      <button class="services-modal-close" type="button" onclick="closeAppointmentModal()" aria-label="Fechar janela de agendamento">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4l12 12M16 4L4 16"/></svg>
+      </button>
+    </div>
+
+    <div class="services-modal-tabs" role="tablist" aria-label="Etapa do agendamento">
+      <button class="services-modal-tab active" type="button" role="tab" aria-selected="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+        Consulta
+      </button>
+    </div>
+
+    <div class="services-modal-body booking-modal-body">
+      <div class="booking-layout">
+        <div class="booking-details">
+          <div class="booking-block">
+            <div class="booking-block-head">
+              <div><span class="booking-step">1</span><strong>Seus dados</strong></div>
+              <small>Campos com * são obrigatórios</small>
+            </div>
+            <div class="booking-form-grid">
+              <div class="cf-group"><label>Nome do tutor *</label><input id="booking-tutor" type="text" placeholder="Seu nome"/></div>
+              <div class="cf-group"><label>Telefone / WhatsApp *</label><input id="booking-phone" type="tel" placeholder="(00) 00000-0000"/></div>
+              <div class="cf-group"><label>Nome do pet *</label><input id="booking-pet" type="text" placeholder="Ex: Luna"/></div>
+              <div class="cf-group"><label>NA do pet</label><input id="booking-na" type="number" min="1" placeholder="Opcional"/></div>
+              <div class="cf-group booking-full"><label>Serviço *</label><select id="booking-service"><option value="Consulta de rotina">Consulta de rotina</option><option>Vacinação</option><option>Exames laboratoriais</option><option>Retorno</option></select></div>
+              <div class="cf-group booking-full"><label>Observação</label><textarea id="booking-message" placeholder="Conte rapidamente o motivo da consulta"></textarea></div>
+            </div>
+          </div>
+
+          <div class="booking-block">
+            <div class="booking-block-head">
+              <div><span class="booking-step">2</span><strong>Escolha a data</strong></div>
+              <small>Segunda a sexta</small>
+            </div>
+            <div class="booking-date-grid" id="booking-date-grid">
+              <div class="booking-loading">Carregando datas disponíveis...</div>
+            </div>
+          </div>
+
+          <div class="booking-block">
+            <div class="booking-block-head">
+              <div><span class="booking-step">3</span><strong>Escolha o horário</strong></div>
+              <small>08:00–12:00 · 14:00–18:00</small>
+            </div>
+            <div class="booking-time-grid" id="booking-time-grid">
+              <div class="booking-empty-time">Selecione uma data para ver os horários.</div>
+            </div>
+            <div class="booking-legend"><span><i class="free"></i>Disponível</span><span><i class="busy"></i>Indisponível</span></div>
+          </div>
+        </div>
+
+        <aside class="booking-summary">
+          <div class="booking-summary-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M8 3v4M16 3v4M3 10h18M8 14h3M8 18h7"/></svg>
+          </div>
+          <span class="booking-summary-kicker">Seu horário</span>
+          <h3 id="booking-selected-summary">Selecione uma data e horário</h3>
+          <p>Antes de confirmar, o sistema verifica novamente o banco para evitar conflito com procedimentos já marcados.</p>
+          <div class="booking-summary-note">
+            <strong>Horário da clínica</strong>
+            <span>Seg–Sex · 08h às 18h</span>
+          </div>
+          <button class="booking-submit" id="booking-submit" type="button" onclick="submitBookingAppointment()" disabled>Confirmar agendamento</button>
+        </aside>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROFILE PANELS -->
+<div class="profile-overlay" id="doc-overlay" onclick="closePanel('doc')"></div>
+<div class="profile-panel" id="doc-panel">
+  <div class="pp-head"><div class="pp-avatar" id="doc-pp-av">V</div><div class="pp-name" id="doc-pp-name">—</div><div class="pp-email" id="doc-pp-email">—</div></div>
+  <div class="pp-nav">
+    <button class="pp-item" onclick="openEdit('doc')"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 20 20"><path d="M14.7 4.3a1 1 0 011.4 1.4l-9 9L4 16l1.3-3.1 9-9z"/></svg>Editar perfil</button>
+    <div class="pp-sep"></div>
+    <button class="pp-item danger" onclick="openConfirm('doc')"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 20 20"><path d="M13 14l3-3-3-3"/><path d="M16 11H8M8 5H5a1 1 0 00-1 1v8a1 1 0 001 1h3"/></svg>Sair da conta</button>
+  </div>
+</div>
+<div class="profile-overlay" id="pat-overlay" onclick="closePanel('pat')"></div>
+<div class="profile-panel" id="pat-panel">
+  <div class="pp-head"><div class="pp-avatar" id="pat-pp-av">T</div><div class="pp-name" id="pat-pp-name">—</div><div class="pp-email" id="pat-pp-email">—</div></div>
+  <div class="pp-nav">
+    <button class="pp-item" onclick="openEdit('pat')"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 20 20"><path d="M14.7 4.3a1 1 0 011.4 1.4l-9 9L4 16l1.3-3.1 9-9z"/></svg>Editar perfil</button>
+    <div class="pp-sep"></div>
+    <button class="pp-item danger" onclick="openConfirm('pat')"><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 20 20"><path d="M13 14l3-3-3-3"/><path d="M16 11H8M8 5H5a1 1 0 00-1 1v8a1 1 0 001 1h3"/></svg>Sair da conta</button>
+  </div>
+</div>
+
+<!-- PATIENT DETAILS MODAL -->
+<div class="modal-bg" id="patient-detail-modal-bg" onclick="if(event.target===this)closePatientDetails()">
+  <div class="modal patient-detail-modal">
+    <div class="modal-hd"><h3>Ficha do paciente</h3><button class="modal-x" onclick="closePatientDetails()"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l10 10M13 3L3 13"/></svg></button></div>
+    <div id="patient-detail-content"></div>
+  </div>
+</div>
+
+<!-- EDIT MODAL -->
+<div class="modal-bg" id="edit-modal-bg" onclick="if(event.target===this)closeEdit()">
+  <div class="modal" style="max-width:440px">
+    <div class="modal-hd"><h3><svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 20 20"><path d="M14.7 4.3a1 1 0 011.4 1.4l-9 9L4 16l1.3-3.1 9-9z"/></svg>Editar perfil</h3><button class="modal-x" onclick="closeEdit()"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l10 10M13 3L3 13"/></svg></button></div>
+    <div class="edit-photo-center">
+      <div class="edit-avatar" id="edit-av">V</div>
+      <div class="edit-photo-lbl"><input type="file" accept="image/*" id="edit-photo-in" onchange="handleEditPhoto(this)"/><span>Alterar foto de perfil</span></div>
+    </div>
+    <div class="fg"><label>Nome de exibição</label><input type="text" id="edit-name" placeholder="Seu nome completo"/></div>
+    <hr class="edit-sep"/>
+    <div class="fg"><label>Senha atual</label><input type="password" id="edit-old-pwd" placeholder="Digite sua senha atual"/></div>
+    <div class="fg"><label>Nova senha</label><input type="password" id="edit-new-pwd" placeholder="Mínimo 12 caracteres"/><div class="hint">12+ caracteres, maiúscula, minúscula, número e símbolo</div></div>
+    <div class="fg"><label>Confirmar nova senha</label><input type="password" id="edit-conf-pwd" placeholder="Repita a nova senha"/></div>
+    <div id="edit-msg"></div>
+    <div class="modal-actions"><button class="btn-mcancel" onclick="closeEdit()">Cancelar</button><button class="btn-mok" onclick="saveEdit()">Salvar</button></div>
+  </div>
+</div>
+
+<!-- CONFIRM LOGOUT -->
+<div class="modal-bg" id="confirm-modal-bg" onclick="if(event.target===this)closeConfirm()">
+  <div class="modal confirm-modal">
+    <div class="modal-hd"><h3>Sair da conta?</h3><button class="modal-x" onclick="closeConfirm()"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l10 10M13 3L3 13"/></svg></button></div>
+    <p>Seus dados de login serão preservados e você poderá entrar novamente a qualquer momento.</p>
+    <div class="modal-actions"><button class="btn-no" onclick="closeConfirm()">Não</button><button class="btn-yes" onclick="doConfirmLogout()">Sim, sair</button></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10l5 5 7-8"/></svg><span id="toast-text"></span></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="script.js"></script>
+</body>
+</html>
