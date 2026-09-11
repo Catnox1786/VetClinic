@@ -169,6 +169,18 @@ function safeImageSrc(src) {
   return /^data:image\/(?:jpeg|png|webp);base64,[A-Za-z0-9+/=]+$/.test(src) ? src : '';
 }
 
+function normalizeProfileUser(user = {}) {
+  const email = String(user.email || '').trim();
+  const fallback = email.includes('@') ? email.split('@')[0] : 'Usuário';
+  const name = String(user.name || '').trim() || fallback;
+  return { ...user, name, email };
+}
+
+function profileInitials(user) {
+  const name = normalizeProfileUser(user).name;
+  return name.split(/\s+/).map(part => part[0]).slice(0, 2).join('').toUpperCase();
+}
+
 // Valida se um e-mail tem formato válido
 function validarEmail(email) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -379,20 +391,38 @@ async function doDocRegister() {
 
 // Define o avatar (foto ou iniciais) em um elemento HTML
 function setAv(el, user) {
-  const ini = user.name.split(' ').map(n => n[0]).slice(0, 2).join('').toUpperCase();
-  const safePhoto = safeImageSrc(user.photo);
-  if (safePhoto) { el.innerHTML = `<img src="${safePhoto}"/>`; }
-  else el.textContent = ini;
+  if (!el) return;
+  const normalized = normalizeProfileUser(user);
+  const safePhoto = safeImageSrc(normalized.photo);
+  if (safePhoto) { el.innerHTML = `<img src="${safePhoto}" alt="Foto de perfil"/>`; }
+  else el.textContent = profileInitials(normalized);
+}
+
+// Atualiza os elementos de perfil sem reconstruir a tela atual.
+// Isso preserva o pet consultado pelo tutor e a seção aberta pelo médico.
+function updateProfileUI(user) {
+  const normalized = normalizeProfileUser(user);
+  if (normalized.role === 'doc' || currentSession?.role === 'doc') {
+    setAv(document.getElementById('tb-av'), normalized);
+    document.getElementById('tb-un').textContent = `Dr(a). ${normalized.name}`;
+    setAv(document.getElementById('doc-pp-av'), normalized);
+    document.getElementById('doc-pp-name').textContent = `Dr(a). ${normalized.name}`;
+    document.getElementById('doc-pp-email').textContent = normalized.email;
+  }
+  if (normalized.role === 'pat' || currentSession?.role === 'pat') {
+    setAv(document.getElementById('pat-tb-av'), normalized);
+    document.getElementById('pat-tb-un').textContent = normalized.name;
+    setAv(document.getElementById('pat-pp-av'), normalized);
+    document.getElementById('pat-pp-name').textContent = normalized.name;
+    document.getElementById('pat-pp-email').textContent = normalized.email;
+  }
 }
 
 // Entra no painel do médico após login bem-sucedido
 function enterDocApp(user) {
+  user = normalizeProfileUser(user);
   showScreen('app-screen');
-  setAv(document.getElementById('tb-av'), user);
-  document.getElementById('tb-un').textContent = 'Dr(a). ' + sanitizar(user.name);
-  setAv(document.getElementById('doc-pp-av'), user);
-  document.getElementById('doc-pp-name').textContent  = 'Dr(a). ' + sanitizar(user.name);
-  document.getElementById('doc-pp-email').textContent = sanitizar(user.email);
+  updateProfileUI(user);
   updateSbCount();
   buildCalendar();
   buildTimeOpts();
@@ -549,12 +579,9 @@ async function doPatRegister() {
 
 // Entra no portal do tutor após login bem-sucedido
 function enterPatPortal(user) {
+  user = normalizeProfileUser(user);
   showScreen('patient-screen');
-  setAv(document.getElementById('pat-tb-av'), user);
-  document.getElementById('pat-tb-un').textContent = sanitizar(user.name);
-  setAv(document.getElementById('pat-pp-av'), user);
-  document.getElementById('pat-pp-name').textContent  = sanitizar(user.name);
-  document.getElementById('pat-pp-email').textContent = sanitizar(user.email);
+  updateProfileUI(user);
   document.getElementById('pat-result').style.display = 'none';
   document.getElementById('pat-na-in').value          = '';
   document.getElementById('pat-search-msg').innerHTML = '';
@@ -653,6 +680,10 @@ function comprimirImagem(file, maxDim = 480, qualidade = 0.82) {
   return new Promise((resolve, reject) => {
     if (!file.type || !file.type.startsWith('image/')) {
       reject(new Error('Arquivo selecionado não é uma imagem.'));
+      return;
+    }
+    if (file.size > 5 * 1024 * 1024) {
+      reject(new Error('A imagem deve ter no máximo 5 MB.'));
       return;
     }
     const reader = new FileReader();
@@ -1508,12 +1539,11 @@ function openEdit(role) {
   editRole = role;
   newPhoto = null;
   closePanel(role);
-  const user = currentSession && currentSession.role === role ? currentSession.user : null;
+  const user = currentSession && currentSession.role === role ? normalizeProfileUser(currentSession.user) : null;
   if (!user) return showToast('Sua sessão expirou. Entre novamente.');
-  const ini = user.name.split(' ').map(n => n[0]).slice(0,2).join('').toUpperCase();
   const av = document.getElementById('edit-av');
   const safePhoto = safeImageSrc(user.photo);
-  if (safePhoto) av.innerHTML = `<img src="${safePhoto}"/>`; else av.textContent = ini;
+  if (safePhoto) av.innerHTML = `<img src="${safePhoto}" alt="Foto de perfil"/>`; else av.textContent = profileInitials(user);
   document.getElementById('edit-name').value = user.name || '';
   ['edit-old-pwd','edit-new-pwd','edit-conf-pwd'].forEach(id => document.getElementById(id).value = '');
   document.getElementById('edit-photo-in').value = '';
@@ -1533,9 +1563,10 @@ async function handleEditPhoto(input) {
   if (!f) return;
   try {
     newPhoto = await comprimirImagem(f);
-    document.getElementById('edit-av').innerHTML = `<img src="${newPhoto}"/>`;
+    document.getElementById('edit-av').innerHTML = `<img src="${newPhoto}" alt="Nova foto de perfil"/>`;
   } catch (err) {
     showMMsg('Não foi possível carregar essa imagem. Tente outra foto.', 'err');
+    input.value = '';
   }
 }
 
@@ -1557,8 +1588,8 @@ async function saveEdit() {
   if (newPhoto !== null) body.photo = newPhoto;
   try {
     const result = await apiRequest('profile_update', { method:'POST', body });
-    currentSession.user = result.user;
-    if (editRole === 'doc') enterDocApp(result.user); else enterPatPortal(result.user);
+    currentSession.user = normalizeProfileUser(result.user);
+    updateProfileUI(currentSession.user);
     showMMsg('Perfil atualizado com sucesso!', 'ok');
     setTimeout(() => closeEdit(), 900);
     showToast('Perfil atualizado!');

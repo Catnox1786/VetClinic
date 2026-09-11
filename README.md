@@ -1,6 +1,13 @@
 VETCLINIC — VERSÃO SUPABASE
 ===========================
 
+URL pública
+----------
+O site deve ser acessado em:
+https://vetclinic-seven.vercel.app/#servicos
+
+Não há referências de navegação para um endereço local neste projeto. Caso uma configuração externa ainda use um destino local, substitua-o pela URL pública acima.
+
 Esta versão não depende mais de UwAmp, PHP ou MySQL local.
 Backend utilizado:
 - Supabase Auth
@@ -36,8 +43,11 @@ MySQL local
 
 COMO TESTAR
 -----------
-Recomendado: sirva esta pasta por HTTP (por exemplo, Live Server do VS Code)
-e abra o endereço fornecido pelo servidor local.
+Produção: abra https://vetclinic-seven.vercel.app/#servicos.
+
+Desenvolvimento: sirva esta pasta por HTTP (por exemplo, Live Server do VS Code)
+somente para testar alterações localmente; a URL pública oficial continua sendo
+https://vetclinic-seven.vercel.app/#servicos.
 
 Se a confirmação de e-mail estiver ativada no Supabase, após criar uma conta:
 1. abra o e-mail de confirmação;
